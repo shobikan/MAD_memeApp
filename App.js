@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import Navigation from './App/navigation/Navigation';
+import FloatingButton from './App/components/FloatingButton';
+import { CountProvider } from './App/components/CountContext';
+import { UserProvider } from './App/components/UserContext';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <UserProvider>
+      <CountProvider>
+        <View style={styles.container}>
+          <Navigation />
+          <FloatingButton />
+        </View>
+      </CountProvider>
+    </UserProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });
